@@ -61,20 +61,20 @@ header {
   border-top: 4px solid var(--border);
   border-bottom: 4px solid var(--border);
   padding: 0;
-  /* 세로 끈(56px): 끈 면이 배경보다 밝고, 가운데 수평 홈(어두운 줄) */
+  /* 세로 끈(56px): 끈은 배경보다 어두운 검은 띠, 가운데에 밝은 능선(ridge) 줄 */
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(0,0,0,0.75) 0px,
-      rgba(0,0,0,0.75) 2px,
+      rgba(255,255,255,0.16) 0px,
+      rgba(255,255,255,0.16) 2px,
       transparent 2px,
-      transparent 4px
+      transparent 5px
     ) calc(50% - 28px) 50% / 56px 65% no-repeat,
     linear-gradient(
       to right,
       transparent calc(50% - 28px),
-      #3c3834 calc(50% - 28px),
-      #3c3834 calc(50% + 28px),
+      #0a0806 calc(50% - 28px),
+      #0a0806 calc(50% + 28px),
       transparent calc(50% + 28px)
     ),
     #141210;
@@ -612,20 +612,20 @@ section {
   padding: 1.2rem;
   border: 2px solid var(--border);
   box-shadow: var(--shadow);
-  /* 세로 끈(56px, 75% 위치): 끈 면이 배경보다 밝고, 가운데만 어두운 홈 줄무늬 */
+  /* 세로 끈(56px, 75% 위치): 끈은 배경보다 어두운 검은 띠, 가운데에 밝은 능선 줄 */
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(0,0,0,0.75) 0px,
-      rgba(0,0,0,0.75) 2px,
+      rgba(255,255,255,0.13) 0px,
+      rgba(255,255,255,0.13) 2px,
       transparent 2px,
-      transparent 4px
+      transparent 5px
     ) calc(75% - 28px) 50% / 56px 60% no-repeat,
     linear-gradient(
       to right,
       #1a1a18 calc(75% - 28px),
-      #3c3834 calc(75% - 28px),
-      #3c3834 calc(75% + 28px),
+      #0a0806 calc(75% - 28px),
+      #0a0806 calc(75% + 28px),
       #1a1a18 calc(75% + 28px)
     );
 }
