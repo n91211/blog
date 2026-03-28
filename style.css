@@ -82,14 +82,14 @@ header::before {
       to bottom,
       rgba(255,255,255,0.16) 0px,
       rgba(255,255,255,0.16) 4px,
-      transparent 4px,
-      transparent 10px
+      #141210 4px,
+      #141210 10px
     ) calc(75% + 14px) 50% / 56px 65% no-repeat,
     linear-gradient(
       to right,
       transparent calc(75% - 28px),
-      #141210 calc(75% - 28px),
-      #141210 calc(75% + 28px),
+      #0a0806 calc(75% - 28px),
+      #0a0806 calc(75% + 28px),
       transparent calc(75% + 28px)
     );
   pointer-events: none;
@@ -633,14 +633,14 @@ section {
       to bottom,
       rgba(255,255,255,0.13) 0px,
       rgba(255,255,255,0.13) 4px,
-      transparent 4px,
-      transparent 10px
+      #1a1a18 4px,
+      #1a1a18 10px
     ) calc(75% + 14px) 50% / 56px 60% no-repeat,
     linear-gradient(
       to right,
       #1a1a18 calc(75% - 28px),
-      #1a1a18 calc(75% - 28px),
-      #1a1a18 calc(75% + 28px),
+      #0a0806 calc(75% - 28px),
+      #0a0806 calc(75% + 28px),
       #1a1a18 calc(75% + 28px)
     );
 }
