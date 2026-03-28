@@ -623,7 +623,7 @@ section {
 }
 
 .about-contact {
-  grid-column: 2;
+  grid-column: 1 / -1;
   grid-row: 3;
   display: flex;
   flex-direction: column;
@@ -635,9 +635,8 @@ section {
 
 .contact-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.5rem;
-  font-size: 13px;
 }
 
 .contact-label {
@@ -653,28 +652,30 @@ section {
 }
 
 .contact-copy {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 11px;
+  color: var(--muted);
   background: none;
   border: none;
+  border-bottom: 1px solid var(--muted);
   cursor: pointer;
-  font-size: 13px;
-  padding: 0 0.2rem;
-  line-height: 1;
-  opacity: 0.6;
-  transition: opacity 0.1s;
+  padding: 0;
+  line-height: 1.4;
+  transition: color 0.1s, border-color 0.1s;
 }
 
-.contact-copy:hover { opacity: 1; }
+.contact-copy:hover { color: var(--text); border-color: var(--text); }
 
 .contact-link {
   font-family: 'Neo둥근모', monospace;
   font-size: 12px;
   color: var(--muted);
   text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  transition: color 0.1s;
+  border-bottom: 1px solid var(--muted);
+  transition: color 0.1s, border-color 0.1s;
 }
 
-.contact-link:hover { color: var(--text); }
+.contact-link:hover { color: var(--text); border-color: var(--text); }
 
 .about-orgs {
   font-size: 13px;
@@ -921,10 +922,6 @@ footer p::after  { content: ' ]'; }
     max-width: none;
   }
 
-  .about-contact {
-    grid-column: 1 / -1;
-    grid-row: 3;
-  }
 
   .works-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
