@@ -396,6 +396,16 @@ function renderHistoryContent() {
   contentEl.innerHTML = html;
 }
 
+// ── Email copy ───────────────────────────────────────────────
+
+function copyEmail(btn) {
+  navigator.clipboard.writeText('wirae@hotmail.com').then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+}
+
 // ── Init ─────────────────────────────────────────────────────
 
 renderFilterButtons();

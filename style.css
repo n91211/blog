@@ -622,6 +622,60 @@ section {
   align-self: start;
 }
 
+.about-contact {
+  grid-column: 2;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--muted);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+}
+
+.contact-label {
+  color: var(--muted);
+  font-size: 12px;
+  min-width: 36px;
+  flex-shrink: 0;
+}
+
+.contact-value {
+  color: var(--text);
+  font-size: 12px;
+}
+
+.contact-copy {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0 0.2rem;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
+.contact-copy:hover { opacity: 1; }
+
+.contact-link {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.1s;
+}
+
+.contact-link:hover { color: var(--text); }
+
 .about-orgs {
   font-size: 13px;
   color: var(--muted);
@@ -865,6 +919,11 @@ footer p::after  { content: ' ]'; }
     grid-row: 2;
     margin-top: 0.8rem;
     max-width: none;
+  }
+
+  .about-contact {
+    grid-column: 1 / -1;
+    grid-row: 3;
   }
 
   .works-grid {
