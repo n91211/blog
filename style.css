@@ -69,7 +69,7 @@ header {
       rgba(255,255,255,0.16) 2px,
       transparent 2px,
       transparent 5px
-    ) calc(50% - 28px) 50% / 56px 65% no-repeat,
+    ) 50% 50% / 56px 65% no-repeat,
     linear-gradient(
       to right,
       transparent calc(50% - 28px),
@@ -620,7 +620,7 @@ section {
       rgba(255,255,255,0.13) 2px,
       transparent 2px,
       transparent 5px
-    ) calc(75% - 28px) 50% / 56px 60% no-repeat,
+    ) calc(75% + 14px) 50% / 56px 60% no-repeat,
     linear-gradient(
       to right,
       #1a1a18 calc(75% - 28px),
