@@ -192,7 +192,7 @@ main {
 /* ── Portfolio sidebar layout ──────────────────────────── */
 .portfolio-layout {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: minmax(0, 72px) 1fr;
   gap: 1.5rem;
   align-items: start;
 }
@@ -200,6 +200,9 @@ main {
 .sidebar {
   position: sticky;
   top: calc(var(--header-h) + 1rem);
+  width: 72px;
+  max-width: 72px;
+  overflow: hidden;
 }
 
 section {
