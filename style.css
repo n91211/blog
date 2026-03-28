@@ -61,7 +61,7 @@ header {
   border-top: 4px solid var(--border);
   border-bottom: 4px solid var(--border);
   padding: 0;
-  background: #141210;
+  background: var(--bg2);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -82,8 +82,8 @@ header::before {
       to bottom,
       rgba(255,255,255,0.16) 0px,
       rgba(255,255,255,0.16) 4px,
-      #141210 4px,
-      #141210 10px
+      #1a1a18 4px,
+      #1a1a18 10px
     ) calc(75% + 14px) 50% / 56px 65% no-repeat,
     linear-gradient(
       to right,
