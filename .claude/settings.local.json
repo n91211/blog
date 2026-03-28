@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(curl -L -o C:/Users/Wirae/my-blog/fonts/neodgm.woff2 \"https://github.com/neodgm/neodgm/releases/download/v1.601/neodgm.woff2\")",
+      "Bash(curl -L -o C:/Users/Wirae/my-blog/fonts/neodgm.woff \"https://github.com/neodgm/neodgm/releases/download/v1.601/neodgm.woff\")",
+      "Bash(start:*)"
+    ]
+  }
+}

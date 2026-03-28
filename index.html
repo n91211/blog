@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="작가 위래의 포트폴리오 — 장르 소설, SF, 판타지, 호러">
+  <title>위래의 창고</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Header ───────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="site-title">위래의 창고</a>
+    <nav>
+      <a href="index.html" class="current">portfolio</a>
+      <a href="blog.html">blog</a>
+    </nav>
+  </div>
+  <div class="header-about">
+    <div class="header-about-inner">
+      <span class="header-name">위래</span>
+      <span class="header-sep">—</span>
+      <span class="header-tagline">장르 소설 작가. 판타지, SF, 호러를 주로 쓴다. 2008년 활동 시작. 대표작: <em>슬기로운 문명생활</em>, <em>백관의 왕이 이르니</em>, <em>허깨비 신이 돌아오도다</em></span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Main ─────────────────────────────────────────────── -->
+<main>
+
+  <!-- Works -->
+  <section id="works">
+    <div class="section-label">works</div>
+    <div class="portfolio-layout">
+      <aside class="sidebar">
+        <div class="filter-buttons" id="filterButtons"></div>
+      </aside>
+      <div class="works-grid" id="worksGrid"></div>
+    </div>
+  </section>
+
+  <!-- History -->
+  <section id="history">
+    <div class="section-label">history</div>
+    <div class="history-tabs" id="historyTabs"></div>
+    <div class="history-content" id="historyContent"></div>
+  </section>
+
+</main>
+
+<!-- ── Detail overlay ────────────────────────────────────── -->
+<div class="detail-overlay" id="detailOverlay" role="dialog" aria-modal="true">
+  <div class="detail-panel" id="detailPanel">
+    <button class="detail-close" id="detailClose" aria-label="닫기">✕</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer>
+  <p>© 위래의 창고</p>
+</footer>
+
+<script src="data/works.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

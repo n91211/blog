@@ -1,0 +1,851 @@
+/* ── Neo둥근모 font ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Neo둥근모';
+  src: url('fonts/neodgm.woff2') format('woff2'),
+       url('fonts/neodgm.woff')  format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --bg:             #f4f0e8;
+  --bg2:            #e8e2d4;
+  --text:           #1c1a14;
+  --border:         #1c1a14;
+  --muted:          #5a5648;
+  --card-bg:        #ddd8c8;
+  --panel-bg:       #f4f0e8;
+  --shadow:         4px 4px 0 #1c1a14;
+  --shadow-sm:      2px 2px 0 #1c1a14;
+  --img-bg:         #a8a29a;   /* 카드 이미지 영역 배경 */
+  --warm-gray:      #181614;   /* 카드/필터 그림자·테두리용 웜그레이 */
+  --header-h:       94px;      /* sticky sidebar top offset */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             #0e0e0e;
+    --bg2:            #1a1a18;
+    --text:           #d8d4c0;
+    --border:         #d8d4c0;
+    --muted:          #888070;
+    --card-bg:        #1e1e1a;
+    --panel-bg:       #0e0e0e;
+    --shadow:         4px 4px 0 #d8d4c0;
+    --shadow-sm:      2px 2px 0 #d8d4c0;
+    --img-bg:         #252520;
+    --warm-gray:      #2a2724;
+  }
+}
+
+/* ── Genre tag colors (16-bit palette) ─────────────────── */
+/* Light mode */
+.tag-fantasy  { color: #2a8c3c; border-color: #2a8c3c; }  /* Zelda forest green */
+.tag-sf       { color: #1660c4; border-color: #1660c4; }  /* Mega Man blue */
+.tag-horror   { color: #cc1818; border-color: #cc1818; }  /* Castlevania red */
+.tag-mystery  { color: #7722aa; border-color: #7722aa; }  /* adventure purple */
+.tag-thriller { color: #a07000; border-color: #a07000; }  /* amber tension */
+.tag-romance  { color: #cc2266; border-color: #cc2266; }  /* classic pink */
+.tag-genre    { color: #3a8888; border-color: #3a8888; }  /* teal neutral */
+
+/* Type tag colors */
+.tag-short    { color: #3a5f8a; border-color: #3a5f8a; }  /* slate blue */
+.tag-flash    { color: #2a4f7a; border-color: #2a4f7a; }  /* dark slate */
+.tag-novella  { color: #4a6824; border-color: #4a6824; }  /* olive */
+.tag-coll     { color: #7a4820; border-color: #7a4820; }  /* leather brown */
+.tag-web      { color: #cc5500; border-color: #cc5500; }  /* orange */
+.tag-toon     { color: #aa2277; border-color: #aa2277; }  /* magenta */
+.tag-chat     { color: #6644aa; border-color: #6644aa; }  /* purple */
+
+@media (prefers-color-scheme: dark) {
+  .tag-fantasy  { color: #44cc66; border-color: #44cc66; }
+  .tag-sf       { color: #44aaff; border-color: #44aaff; }
+  .tag-horror   { color: #ff4444; border-color: #ff4444; }
+  .tag-mystery  { color: #bb55ee; border-color: #bb55ee; }
+  .tag-thriller { color: #ffcc33; border-color: #ffcc33; }
+  .tag-romance  { color: #ff66aa; border-color: #ff66aa; }
+  .tag-genre    { color: #55ccbb; border-color: #55ccbb; }
+
+  .tag-short    { color: #6699dd; border-color: #6699dd; }
+  .tag-flash    { color: #5588cc; border-color: #5588cc; }
+  .tag-novella  { color: #88cc44; border-color: #88cc44; }
+  .tag-coll     { color: #cc8855; border-color: #cc8855; }
+  .tag-web      { color: #ff8833; border-color: #ff8833; }
+  .tag-toon     { color: #ff55aa; border-color: #ff55aa; }
+  .tag-chat     { color: #9977dd; border-color: #9977dd; }
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Neo둥근모', 'DungGeunMo', monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+header {
+  border-top: 4px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  padding: 0;
+  background: var(--bg2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.header-about {
+  border-top: 2px solid var(--border);
+  background: var(--bg);
+  padding: 0.35rem 1.5rem;
+}
+
+.header-about-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.header-name {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.header-sep {
+  color: var(--muted);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.header-tagline {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.site-title {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 24px;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.site-title::before {
+  content: '▶ ';
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  gap: 0;
+}
+
+nav a {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.3rem 0.9rem;
+  border: 2px solid transparent;
+  display: inline-block;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+nav a:hover,
+nav a.current {
+  border: 2px solid var(--border);
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ── Main layout ───────────────────────────────────────── */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ── Portfolio sidebar layout ──────────────────────────── */
+.portfolio-layout {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+}
+
+section {
+  margin-bottom: 4.5rem;
+}
+
+/* ── Section label ─────────────────────────────────────── */
+.section-label {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Filter buttons ────────────────────────────────────── */
+.filter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-section-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  padding-bottom: 3px;
+  border-bottom: 1px dashed var(--muted);
+}
+
+.filter-btn {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 12px;
+  background: var(--bg2);
+  border: 2px solid var(--border);
+  color: var(--muted);
+  padding: 0.18rem 0.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--warm-gray);
+  transition: box-shadow 0.15s, color 0.08s, background 0.08s;
+  text-align: left;
+  width: 100%;
+}
+
+.filter-btn:hover:not(.active) {
+  box-shadow: 0 0 8px 2px currentColor;
+}
+
+.filter-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+/* Genre-colored filter buttons — border + text 동일색 (태그와 통일) */
+.filter-btn.flt-fantasy  { border-color: #2a8c3c; color: #2a8c3c; }
+.filter-btn.flt-sf       { border-color: #1660c4; color: #1660c4; }
+.filter-btn.flt-horror   { border-color: #cc1818; color: #cc1818; }
+.filter-btn.flt-mystery  { border-color: #7722aa; color: #7722aa; }
+.filter-btn.flt-thriller { border-color: #a07000; color: #a07000; }
+.filter-btn.flt-romance  { border-color: #cc2266; color: #cc2266; }
+.filter-btn.flt-genre    { border-color: #3a8888; color: #3a8888; }
+.filter-btn.flt-web      { border-color: #cc5500; color: #cc5500; }
+.filter-btn.flt-toon     { border-color: #aa2277; color: #aa2277; }
+.filter-btn.flt-chat     { border-color: #6644aa; color: #6644aa; }
+.filter-btn.flt-short    { border-color: #3a5f8a; color: #3a5f8a; }
+.filter-btn.flt-flash    { border-color: #2a4f7a; color: #2a4f7a; }
+.filter-btn.flt-novella  { border-color: #4a6824; color: #4a6824; }
+.filter-btn.flt-coll     { border-color: #7a4820; color: #7a4820; }
+
+.filter-btn.flt-fantasy.active  { background: #2a8c3c; color: #fff; }
+.filter-btn.flt-sf.active       { background: #1660c4; color: #fff; }
+.filter-btn.flt-horror.active   { background: #cc1818; color: #fff; }
+.filter-btn.flt-mystery.active  { background: #7722aa; color: #fff; }
+.filter-btn.flt-thriller.active { background: #a07000; color: #fff; }
+.filter-btn.flt-romance.active  { background: #cc2266; color: #fff; }
+.filter-btn.flt-genre.active    { background: #3a8888; color: #fff; }
+.filter-btn.flt-web.active      { background: #cc5500; color: #fff; }
+.filter-btn.flt-toon.active     { background: #aa2277; color: #fff; }
+.filter-btn.flt-chat.active     { background: #6644aa; color: #fff; }
+.filter-btn.flt-short.active    { background: #3a5f8a; color: #fff; }
+.filter-btn.flt-flash.active    { background: #2a4f7a; color: #fff; }
+.filter-btn.flt-novella.active  { background: #4a6824; color: #fff; }
+.filter-btn.flt-coll.active     { background: #7a4820; color: #fff; }
+
+@media (prefers-color-scheme: dark) {
+  .filter-btn.flt-fantasy  { border-color: #44cc66; color: #44cc66; }
+  .filter-btn.flt-sf       { border-color: #44aaff; color: #44aaff; }
+  .filter-btn.flt-horror   { border-color: #ff4444; color: #ff4444; }
+  .filter-btn.flt-mystery  { border-color: #bb55ee; color: #bb55ee; }
+  .filter-btn.flt-thriller { border-color: #ffcc33; color: #ffcc33; }
+  .filter-btn.flt-romance  { border-color: #ff66aa; color: #ff66aa; }
+  .filter-btn.flt-genre    { border-color: #55ccbb; color: #55ccbb; }
+  .filter-btn.flt-web      { border-color: #ff8833; color: #ff8833; }
+  .filter-btn.flt-toon     { border-color: #ff55aa; color: #ff55aa; }
+  .filter-btn.flt-chat     { border-color: #9977dd; color: #9977dd; }
+  .filter-btn.flt-short    { border-color: #6699dd; color: #6699dd; }
+  .filter-btn.flt-flash    { border-color: #5588cc; color: #5588cc; }
+  .filter-btn.flt-novella  { border-color: #88cc44; color: #88cc44; }
+  .filter-btn.flt-coll     { border-color: #cc8855; color: #cc8855; }
+
+  .filter-btn.flt-fantasy.active  { background: #44cc66; color: #111; }
+  .filter-btn.flt-sf.active       { background: #44aaff; color: #111; }
+  .filter-btn.flt-horror.active   { background: #ff4444; color: #111; }
+  .filter-btn.flt-mystery.active  { background: #bb55ee; color: #111; }
+  .filter-btn.flt-thriller.active { background: #ffcc33; color: #111; }
+  .filter-btn.flt-romance.active  { background: #ff66aa; color: #111; }
+  .filter-btn.flt-genre.active    { background: #55ccbb; color: #111; }
+  .filter-btn.flt-web.active      { background: #ff8833; color: #111; }
+  .filter-btn.flt-toon.active     { background: #ff55aa; color: #111; }
+  .filter-btn.flt-chat.active     { background: #9977dd; color: #111; }
+  .filter-btn.flt-short.active    { background: #6699dd; color: #111; }
+  .filter-btn.flt-flash.active    { background: #5588cc; color: #111; }
+  .filter-btn.flt-novella.active  { background: #88cc44; color: #111; }
+  .filter-btn.flt-coll.active     { background: #cc8855; color: #111; }
+}
+
+/* ── Works grid ────────────────────────────────────────── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1.2rem 1rem;
+}
+
+/* ── Work card ─────────────────────────────────────────── */
+.work-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.work-card:hover .card-cover-wrapper {
+  box-shadow: 6px 6px 0 var(--warm-gray);
+  transform: translate(-2px, -2px);
+}
+
+.card-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 2px solid var(--warm-gray);
+  box-shadow: 2px 2px 0 var(--warm-gray);
+  background: var(--img-bg);
+  transition: box-shadow 0.1s, transform 0.1s;
+  overflow: hidden;
+}
+
+.card-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-cover-fallback {
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--img-bg);
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  text-align: center;
+  padding: 0.8rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Neo둥근모', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.1rem 0.4rem;
+  z-index: 1;
+}
+
+.card-title {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+/* ── Tags (genre + type) ───────────────────────────────── */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  border: 1px solid currentColor;
+  padding: 0.05rem 0.35rem;
+  line-height: 1.4;
+}
+
+/* ── Detail overlay ────────────────────────────────────── */
+.detail-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.detail-overlay.open {
+  display: flex;
+}
+
+.detail-panel {
+  background: var(--panel-bg);
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--border);
+  max-width: 480px;
+  width: 100%;
+  padding: 0;
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.detail-panel::before {
+  content: '[ ITEM INFO ]';
+  display: block;
+  background: var(--text);
+  color: var(--bg);
+  font-family: 'Neo둥근모', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 1rem;
+}
+
+.detail-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--text);
+  border: none;
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--bg);
+  padding: 0.3rem 0.6rem;
+  transition: opacity 0.1s;
+}
+
+.detail-close:hover {
+  opacity: 0.75;
+}
+
+#detailContent {
+  padding: 1.5rem;
+}
+
+.detail-title {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 20px;
+  line-height: 1.35;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid var(--border);
+  padding-right: 1.5rem;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 1.2rem;
+}
+
+.detail-info {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.detail-row {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed var(--muted);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row dt {
+  color: var(--muted);
+  min-width: 52px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.detail-row dd {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.detail-note {
+  margin-top: 1rem;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  padding: 0.5rem;
+  border: 1px dashed var(--muted);
+}
+
+.detail-note::before {
+  content: '※ ';
+}
+
+.detail-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  border: 2px solid var(--border);
+  padding: 0.4rem 0.9rem;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg2);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.08s, transform 0.08s, background 0.08s, color 0.08s;
+}
+
+.detail-link:hover {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+/* ── About section ─────────────────────────────────────── */
+.about-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 1.2rem;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--bg2);
+}
+
+.about-photo {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.about-photo-fallback {
+  width: 128px;
+  height: 128px;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.about-name {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 24px;
+  margin-bottom: 0.6rem;
+}
+
+.about-bio {
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 0.8rem;
+  max-width: 560px;
+}
+
+.about-orgs {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 2;
+  border-top: 1px dashed var(--muted);
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+/* ── History section ───────────────────────────────────── */
+.history-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.history-tab {
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  background: var(--bg2);
+  border: 2px solid var(--border);
+  color: var(--muted);
+  padding: 0.25rem 0.9rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: color 0.1s, box-shadow 0.08s, transform 0.08s;
+}
+
+.history-tab:hover {
+  color: var(--text);
+}
+
+.history-tab.active {
+  color: var(--bg);
+  background: var(--text);
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.history-content {
+  padding-top: 1.2rem;
+  border-top: 2px solid var(--border);
+  margin-top: 4px;
+}
+
+.history-empty {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 0.5rem 0;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.history-table tr {
+  border-bottom: 1px dashed var(--muted);
+}
+
+.history-table tr:first-child {
+  border-top: 1px dashed var(--muted);
+}
+
+.history-table td {
+  padding: 0.6rem 0.5rem;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.history-table td:first-child {
+  width: 55px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.history-table td:first-child::before {
+  content: '▸ ';
+  font-size: 10px;
+}
+
+.history-table .history-link {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.1s;
+}
+
+.history-table .history-link:hover {
+  color: var(--text);
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+footer {
+  border-top: 4px solid var(--border);
+  text-align: center;
+  padding: 1rem;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  background: var(--bg2);
+}
+
+footer p::before { content: '[ '; }
+footer p::after  { content: ' ]'; }
+
+/* ── Blog page ─────────────────────────────────────────── */
+.blog-list {
+  list-style: none;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.blog-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  align-items: baseline;
+  transition: background 0.08s;
+}
+
+.blog-item:last-child {
+  border-bottom: none;
+}
+
+.blog-item:hover {
+  background: var(--bg2);
+}
+
+.blog-item:hover .blog-title::before {
+  content: '▶ ';
+}
+
+.blog-date {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 88px;
+  padding-top: 0.1rem;
+}
+
+.blog-title {
+  font-size: 16px;
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+}
+
+.blog-title::before {
+  content: '　';
+}
+
+.blog-summary {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .header-inner {
+    padding: 0.7rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .header-about {
+    padding: 0.35rem 1rem;
+  }
+
+  .header-about-inner {
+    justify-content: center;
+  }
+
+  main {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .portfolio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .filter-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .filter-btn {
+    width: auto;
+  }
+
+  .filter-section-label {
+    width: 100%;
+    margin-top: 6px;
+    border-bottom: none;
+    border-top: 1px dashed var(--muted);
+    padding-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .works-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1rem 0.8rem;
+  }
+
+  .blog-item {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .blog-date {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .works-grid {
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 0.9rem 0.6rem;
+  }
+
+  .site-title {
+    font-size: 20px;
+  }
+}
