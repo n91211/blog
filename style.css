@@ -61,22 +61,7 @@ header {
   border-top: 4px solid var(--border);
   border-bottom: 4px solid var(--border);
   padding: 0;
-  background: var(--bg2);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* 헤더 줄무늬: about-content와 동일한 너비/중앙 정렬로 가로 위치 일치 */
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 3rem);
-  max-width: 812px;
+  /* 기본(모바일): 줄무늬 중심 ≈ 뷰포트 75% - 8px, about-content와 맞춤 */
   background:
     repeating-linear-gradient(
       to bottom,
@@ -84,16 +69,18 @@ header::before {
       rgba(255,255,255,0.16) 4px,
       #0a0806 4px,
       #0a0806 10px
-    ) calc(75% + 14px) 50% / 56px 65% no-repeat,
+    ) calc(75% + 6px) 50% / 56px 65% no-repeat,
     linear-gradient(
       to right,
-      transparent calc(75% - 28px),
-      #0a0806 calc(75% - 28px),
-      #0a0806 calc(75% + 28px),
-      transparent calc(75% + 28px)
-    );
-  pointer-events: none;
-  z-index: 0;
+      #1a1a18 calc(75% - 36px),
+      #0a0806 calc(75% - 36px),
+      #0a0806 calc(75% + 20px),
+      #1a1a18 calc(75% + 20px)
+    ),
+    #1a1a18;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header-inner {
@@ -103,8 +90,6 @@ header::before {
   padding: 0.75rem 1.5rem;
   max-width: 860px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
 /* D-pad + 타이틀 묶음 */
@@ -927,10 +912,6 @@ footer p::after  { content: ' ]'; }
     text-align: center;
   }
 
-  /* 모바일에서 main padding = 1rem이므로 너비를 2rem 줄여 about-content와 맞춤 */
-  header::before {
-    width: calc(100% - 2rem);
-  }
 
   .dpad {
     width: 26px;
@@ -1040,6 +1021,28 @@ footer p::after  { content: ' ]'; }
 
   .blog-date {
     min-width: unset;
+  }
+}
+
+/* 데스크탑(≥860px): 줄무늬 중심 = 뷰포트 50% + 203px, about-content와 정확히 일치 */
+@media (min-width: 860px) {
+  header {
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.16) 0px,
+        rgba(255,255,255,0.16) 4px,
+        #0a0806 4px,
+        #0a0806 10px
+      ) calc(50% + 203px) 50% / 56px 65% no-repeat,
+      linear-gradient(
+        to right,
+        #1a1a18 calc(50% + 175px),
+        #0a0806 calc(50% + 175px),
+        #0a0806 calc(50% + 231px),
+        #1a1a18 calc(50% + 231px)
+      ),
+      #1a1a18;
   }
 }
 
