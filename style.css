@@ -646,6 +646,12 @@ section {
   flex-shrink: 0;
 }
 
+.contact-group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+}
+
 .contact-value {
   color: var(--text);
   font-size: 12px;
