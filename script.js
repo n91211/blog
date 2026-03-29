@@ -87,10 +87,10 @@ function buildFilterList() {
 
 // ── Filter state ────────────────────────────────────────────
 
-let currentFilter = '전체';
+let currentFilter = '총서';
 
 function matchesFilter(work) {
-  if (currentFilter === '전체') return true;
+  if (currentFilter === '총서') return true;
   // genre match
   if (splitGenres(work.genre).includes(currentFilter)) return true;
   // type match
@@ -131,20 +131,9 @@ function renderFilterButtons() {
   const types  = TYPE_ORDER.filter(t => typeSet.has(t));
 
   // 전체 버튼
-  container.appendChild(makeFilterBtn('전체', container));
+  container.appendChild(makeFilterBtn('총서', container));
 
-  // 장르 섹션
-  const genreLabel = document.createElement('div');
-  genreLabel.className = 'filter-section-label';
-  genreLabel.textContent = '장르';
-  container.appendChild(genreLabel);
   genres.forEach(label => container.appendChild(makeFilterBtn(label, container)));
-
-  // 형식 섹션
-  const typeLabel = document.createElement('div');
-  typeLabel.className = 'filter-section-label';
-  typeLabel.textContent = '형식';
-  container.appendChild(typeLabel);
   types.forEach(label => container.appendChild(makeFilterBtn(label, container)));
 }
 

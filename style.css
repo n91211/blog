@@ -21,7 +21,7 @@
   --shadow-sm:      2px 2px 0 #d8d4c0;
   --img-bg:         #252520;
   --warm-gray:      #2a2724;
-  --header-h:       94px;
+  --header-h:       100px;
 }
 
 /* ── Genre tag colors ───────────────────────────────────── */
@@ -85,9 +85,10 @@ header {
 
 .header-inner {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 0.6rem 1.5rem 0.5rem;
   max-width: 860px;
   margin: 0 auto;
 }
@@ -99,65 +100,6 @@ header {
   gap: 10px;
 }
 
-/* ── D-pad (십자 방향키) ─────────────────────────────── */
-.dpad {
-  position: relative;
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-}
-
-/* 가로 막대 */
-.dpad::before {
-  content: '';
-  position: absolute;
-  top: 11px;
-  left: 0;
-  width: 34px;
-  height: 12px;
-  background: linear-gradient(to bottom,
-    #3a3630 0%,
-    #252220 45%,
-    #0e0c0a 100%
-  );
-  border-radius: 2px;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.35),
-    inset 0 -2px 0 rgba(0,0,0,0.6),
-    0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* 세로 막대 */
-.dpad::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 11px;
-  width: 12px;
-  height: 34px;
-  background: linear-gradient(to bottom,
-    #252220 0%,
-    #1c1a18 45%,
-    #0e0c0a 100%
-  );
-  border-radius: 2px;
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.18),
-    inset 0 -2px 0 rgba(0,0,0,0.6),
-    0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* 중앙 원 — 교차점을 덮어 십자가 인상 완화 */
-.dpad-center {
-  position: absolute;
-  top: 11px;
-  left: 11px;
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle at 38% 34%, #252220, #111010);
-  border-radius: 50%;
-  z-index: 2;
-}
 
 .header-about {
   border-top: 2px solid var(--border);
@@ -210,54 +152,45 @@ nav a {
   font-size: 14px;
   letter-spacing: 0.08em;
   text-decoration: none;
-  color: #5a5450;
-  padding: 0.3rem 0.9rem;
-  border: 2px solid transparent;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.12s;
+  color: #888070;
+  padding: 0.25rem 0.9rem;
+  border: 2px solid #1a1816;
+  background: #2a2724;
+  box-shadow: 2px 2px 0 #1a1816;
+  display: inline-block;
+  transition: color 0.1s, box-shadow 0.08s, transform 0.08s;
 }
 
-/* 빨간 버튼 (선택 표시) */
 nav a::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  /* 상단 중앙 하이라이트 — 버튼형 입체감 */
-  background: radial-gradient(circle at 50% 30%,
-    #ee5555 0%,
-    #cc1111 45%,
-    #8a0a0a 100%
-  );
-  box-shadow:
-    inset 0 3px 0 rgba(255,160,160,0.22),
-    inset 0 -3px 0 rgba(0,0,0,0.45),
-    0 1px 3px rgba(0,0,0,0.25);
-  opacity: 0;
-  transition: opacity 0.12s;
+  display: none;
 }
 
-nav a:hover,
+nav a:hover {
+  color: #c8c4b8;
+  border: 2px solid #1a1816;
+  background: #2a2724;
+  box-shadow: 2px 2px 0 #1a1816;
+}
+
 nav a.current {
-  border: 2px solid transparent;
-  background: transparent;
-  color: #1a1816;
-}
-
-nav a:hover::before,
-nav a.current::before {
-  opacity: 1;
+  color: #c8c4b8;
+  background: #0a0806;
+  border: 2px solid #1a1816;
+  box-shadow: none;
+  transform: translate(2px, 2px);
 }
 
 /* ── Main layout ───────────────────────────────────────── */
 main {
   max-width: 860px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  padding: 2rem 1.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+main > section:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Portfolio sidebar layout ──────────────────────────── */
@@ -301,14 +234,7 @@ section {
 }
 
 .filter-section-label {
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 2px;
-  padding-bottom: 3px;
-  border-bottom: 1px dashed var(--muted);
+  display: none;
 }
 
 .filter-btn {
@@ -834,6 +760,29 @@ section {
   color: var(--text);
 }
 
+/* ── Bottom stripe (헤더 줄무늬의 하단 반전) ───────────── */
+.bottom-stripe {
+  height: 450px;
+  margin-top: -390px;
+  /* 모바일: 줄무늬(위 75%) → 짙은 회색 띠(아래 25%), 헤더와 동일 수평 위치 */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #232321 0px,
+      #232321 4px,
+      #0e0e0e 4px,
+      #0e0e0e 10px
+    ) calc(75% + 6px) 0% / 56px 75% no-repeat,
+    linear-gradient(
+      to right,
+      #0e0e0e calc(75% - 36px),
+      #232321 calc(75% - 36px),
+      #232321 calc(75% + 20px),
+      #0e0e0e calc(75% + 20px)
+    ),
+    #0e0e0e;
+}
+
 /* ── Footer ────────────────────────────────────────────── */
 footer {
   border-top: 4px solid #1a1816;
@@ -906,34 +855,10 @@ footer p::after  { content: ' ]'; }
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 720px) {
   .header-inner {
-    padding: 0.7rem 1rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
+    padding: 0.6rem 1rem 0.5rem;
   }
 
 
-  .dpad {
-    width: 26px;
-    height: 26px;
-  }
-
-  .dpad::before {
-    top: 7px;
-    width: 26px;
-    height: 12px;
-  }
-
-  .dpad::after {
-    left: 7px;
-    width: 12px;
-    height: 26px;
-  }
-
-  .dpad-center {
-    top: 7px;
-    left: 7px;
-  }
 
   .header-about {
     padding: 0.35rem 1rem;
@@ -944,8 +869,9 @@ footer p::after  { content: ' ]'; }
   }
 
   main {
-    padding: 1.5rem 1rem 3rem;
+    padding: 1.5rem 1rem 0;
   }
+
 
   .portfolio-layout {
     grid-template-columns: 1fr;
@@ -1043,6 +969,25 @@ footer p::after  { content: ' ]'; }
         #c8c4b8 calc(50% + 231px)
       ),
       #c8c4b8;
+  }
+
+  .bottom-stripe {
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        #232321 0px,
+        #232321 4px,
+        #0e0e0e 4px,
+        #0e0e0e 10px
+      ) calc(50% + 203px) 0% / 56px 75% no-repeat,
+      linear-gradient(
+        to right,
+        #0e0e0e calc(50% + 175px),
+        #232321 calc(50% + 175px),
+        #232321 calc(50% + 231px),
+        #0e0e0e calc(50% + 231px)
+      ),
+      #0e0e0e;
   }
 }
 
