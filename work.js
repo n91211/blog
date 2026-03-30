@@ -31,6 +31,10 @@ function loadToolScript(src, callback) {
     loadedScripts.add(src);
     callback();
   };
+  s.onerror = () => {
+    const ui = document.getElementById('tool-ui-' + currentTool);
+    if (ui) ui.textContent = '도구를 불러오지 못했습니다.';
+  };
   document.body.appendChild(s);
 }
 
@@ -43,11 +47,11 @@ function renderToolTabs() {
 
   TOOLS.forEach(tool => {
     const btn = document.createElement('button');
-    btn.className = 'history-tab' + (tool.id === currentTool ? ' active' : '');
+    btn.className = 'tool-tab' + (tool.id === currentTool ? ' active' : '');
     btn.textContent = tool.title;
     btn.addEventListener('click', () => {
       currentTool = tool.id;
-      tabsEl.querySelectorAll('.history-tab').forEach(b => b.classList.remove('active'));
+      tabsEl.querySelectorAll('.tool-tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderToolContent();
     });

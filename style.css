@@ -228,6 +228,13 @@ section {
   margin-bottom: 1.5rem;
 }
 
+.section-pending {
+  color: var(--muted);
+  font-family: 'Neo둥근모', monospace;
+  font-size: 14px;
+  padding: 2rem 0;
+}
+
 /* ── Filter buttons ────────────────────────────────────── */
 .filter-buttons {
   display: flex;
@@ -682,7 +689,8 @@ section {
   flex-wrap: wrap;
 }
 
-.history-tab {
+.history-tab,
+.tool-tab {
   font-family: 'Neo둥근모', monospace;
   font-size: 14px;
   letter-spacing: 0.06em;
@@ -695,11 +703,13 @@ section {
   transition: color 0.1s, box-shadow 0.08s, transform 0.08s;
 }
 
-.history-tab:hover {
+.history-tab:hover,
+.tool-tab:hover {
   color: var(--text);
 }
 
-.history-tab.active {
+.history-tab.active,
+.tool-tab.active {
   color: var(--bg);
   background: var(--text);
   box-shadow: none;
@@ -712,7 +722,8 @@ section {
   margin-top: 4px;
 }
 
-.history-empty {
+.history-empty,
+.works-empty {
   font-size: 14px;
   color: var(--muted);
   padding: 0.5rem 0;
