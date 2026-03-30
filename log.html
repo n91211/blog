@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="위래의 작업 — 도구, 변환, 작업실">
-  <title>작업 — 위래의 누리집</title>
+  <meta name="description" content="위래의 기록 — 일기, 리뷰, 소설, 작법">
+  <title>기록 — 위래의 누리집</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico">
   <script src="theme.js"></script>
@@ -20,8 +20,8 @@
       </div>
       <nav>
         <a href="index.html">소개</a>
-        <a href="log.html">기록</a>
-        <a href="work.html" class="current">작업</a>
+        <a href="log.html" class="current">기록</a>
+        <a href="work.html">작업</a>
       </nav>
     </div>
     <button id="themeToggle" class="theme-toggle" aria-label="테마 전환"></button>
@@ -30,9 +30,15 @@
 
 <!-- ── Main ─────────────────────────────────────────────── -->
 <main>
-  <section id="tools">
-    <div class="history-tabs" id="toolTabs"></div>
-    <div class="history-content" id="toolContent"></div>
+  <section id="docs">
+    <div class="docs-header-row">
+      <div class="docs-tabs" id="docsTabs"></div>
+      <div id="docsExpandWrap"></div>
+    </div>
+    <div class="docs-layout">
+      <div class="docs-list" id="docsList"></div>
+      <div class="docs-viewer" id="docsViewer"></div>
+    </div>
   </section>
 </main>
 
@@ -44,6 +50,7 @@
   <p>이 누리집의 모든 글에 대한 저작권은 저자에게 있습니다.</p>
 </footer>
 
-<script src="work.js"></script>
+<script src="data/docs.js"></script>
+<script src="log.js"></script>
 </body>
 </html>

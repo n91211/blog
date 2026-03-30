@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "b": "node build-docs.js"
+  },
+  "dependencies": {
+    "iconv-lite": "^0.7.2"
+  }
+}

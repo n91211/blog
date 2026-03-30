@@ -7,20 +7,24 @@
   <title>위래의 누리집</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico">
+  <script src="theme.js"></script>
 </head>
 <body>
 
 <!-- ── Header ───────────────────────────────────────────── -->
 <header>
   <div class="header-inner">
-    <div class="site-left">
-      <a href="index.html" class="site-title">위래의 누리집</a>
+    <div class="header-left">
+      <div class="site-left">
+        <a href="index.html" class="site-title">위래의 누리집</a>
+      </div>
+      <nav>
+        <a href="index.html" class="current">소개</a>
+        <a href="log.html">기록</a>
+        <a href="work.html">작업</a>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html" class="current">소개</a>
-      <a href="novel.html">문서</a>
-      <a href="work.html">작업</a>
-    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="테마 전환"></button>
   </div>
 </header>
 
@@ -71,10 +75,8 @@
 
   <!-- Works -->
   <section id="works">
-    <div class="portfolio-layout">
-      <aside class="sidebar">
-        <div class="filter-buttons" id="filterButtons"></div>
-      </aside>
+    <div class="history-tabs" id="worksTabs"></div>
+    <div class="history-content">
       <div class="works-grid" id="worksGrid"></div>
     </div>
   </section>
@@ -94,6 +96,7 @@
 <!-- ── Footer ────────────────────────────────────────────── -->
 <footer>
   <p>© 2026 위래의 누리집</p>
+  <p>이 누리집의 모든 글에 대한 저작권은 저자에게 있습니다.</p>
 </footer>
 
 <script src="data/works.js"></script>

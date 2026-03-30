@@ -24,23 +24,6 @@ const TYPE_CLASS = {
   '채팅소설': 'tag-chat',
 };
 
-// Filter button border class map (matches CSS .flt-* rules)
-const FILTER_CLASS = {
-  '판타지':   'flt-fantasy',
-  'SF':       'flt-sf',
-  '호러':     'flt-horror',
-  '미스터리': 'flt-mystery',
-  '스릴러':   'flt-thriller',
-  '로맨스':   'flt-romance',
-  '장르소설': 'flt-genre',
-  '웹소설':   'flt-web',
-  '웹툰':     'flt-toon',
-  '채팅소설': 'flt-chat',
-  '단편':     'flt-short',
-  '초단편':   'flt-flash',
-  '경장편':   'flt-novella',
-  '소설집':   'flt-coll',
-};
 
 // ── Utilities ───────────────────────────────────────────────
 
@@ -64,61 +47,28 @@ function makeTag(label, classMap) {
   return span;
 }
 
-// ── Preferred display order ─────────────────────────────────
+// ── Works tabs ───────────────────────────────────────────────
 
-const GENRE_ORDER = ['판타지', 'SF', '호러', '미스터리', '스릴러', '로맨스'];
-const TYPE_ORDER  = ['초단편', '단편', '경장편', '소설집', '웹소설', '웹툰', '채팅소설'];
+const WORKS_TABS = ['픽션', '논픽션'];
+let currentWorksTab = '픽션';
 
-// ── Filter state ────────────────────────────────────────────
+function renderWorksTabs() {
+  const tabsEl = document.getElementById('worksTabs');
+  if (!tabsEl) return;
 
-let currentFilter = '총서';
-
-function matchesFilter(work) {
-  if (currentFilter === '총서') return true;
-  // genre match
-  if (splitGenres(work.genre).includes(currentFilter)) return true;
-  // type match
-  if (work.type === currentFilter) return true;
-  return false;
-}
-
-// ── Render filter buttons ───────────────────────────────────
-
-function makeFilterBtn(label, container) {
-  const btn = document.createElement('button');
-  const fc  = FILTER_CLASS[label] || '';
-  btn.className = 'filter-btn' + (fc ? ' ' + fc : '') + (label === currentFilter ? ' active' : '');
-  btn.textContent = label;
-  btn.addEventListener('click', () => {
-    if (currentFilter === label) return;
-    currentFilter = label;
-    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderWorks();
+  WORKS_TABS.forEach(tab => {
+    const btn = document.createElement('button');
+    btn.className = 'history-tab' + (tab === currentWorksTab ? ' active' : '');
+    btn.textContent = tab;
+    btn.addEventListener('click', () => {
+      if (currentWorksTab === tab) return;
+      currentWorksTab = tab;
+      tabsEl.querySelectorAll('.history-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderWorks();
+    });
+    tabsEl.appendChild(btn);
   });
-  return btn;
-}
-
-function renderFilterButtons() {
-  const container = document.getElementById('filterButtons');
-  if (!container) return;
-
-  // 데이터에서 실제 존재하는 장르/형식 추출
-  const genreSet = new Set();
-  const typeSet  = new Set();
-  WORKS.forEach(w => {
-    splitGenres(w.genre).forEach(g => genreSet.add(g));
-    typeSet.add(w.type);
-  });
-
-  const genres = GENRE_ORDER.filter(g => genreSet.has(g));
-  const types  = TYPE_ORDER.filter(t => typeSet.has(t));
-
-  // 전체 버튼
-  container.appendChild(makeFilterBtn('총서', container));
-
-  genres.forEach(label => container.appendChild(makeFilterBtn(label, container)));
-  types.forEach(label => container.appendChild(makeFilterBtn(label, container)));
 }
 
 // ── Render works grid ───────────────────────────────────────
@@ -128,7 +78,7 @@ function renderWorks() {
   if (!grid) return;
   grid.innerHTML = '';
 
-  const visible = WORKS.filter(matchesFilter).reverse();
+  const visible = WORKS.filter(w => (w.category || '픽션') === currentWorksTab).slice().reverse();
 
   if (visible.length === 0) {
     const empty = document.createElement('p');
@@ -334,6 +284,6 @@ function copyEmail(btn) {
 
 // ── Init ─────────────────────────────────────────────────────
 
-renderFilterButtons();
+renderWorksTabs();
 renderWorks();
 renderHistoryTabs();
