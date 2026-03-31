@@ -704,7 +704,7 @@ section {
 footer {
   border-top: none;
   text-align: center;
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   font-size: 13px;
   color: var(--text);
   letter-spacing: 0.12em;
