@@ -1,12 +1,8 @@
-# CLAUDE.md — 위래의 누리집 (blog)
-
-## 언어 설정
-
-항상 한국어로 답변할 것.
+# CLAUDE.md — 위래의 blog
 
 ## 프로젝트 개요
 
-- **사이트명:** 위래의 누리집
+- **사이트명:** 위래의 blog
 - **성격:** 순수 정적 사이트 — 브라우저 JS만 사용
 - **배포:** 파일 그대로 서빙. Node.js는 `build-docs.js`/`watch-docs.js` 전용 개발 도구
 - **내비게이션:** 소개(`index.html`) / 기록(`log.html`) / 작업(`work.html`)
