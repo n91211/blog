@@ -34,6 +34,7 @@
 .tag-genre    { color: #55ccbb; border-color: #55ccbb; }
 
 .tag-ascii    { color: #00ffcc; border-color: #00ffcc; }
+.tag-game     { color: #ffaa33; border-color: #ffaa33; }
 
 .tag-short    { color: #6699dd; border-color: #6699dd; }
 .tag-flash    { color: #cc77bb; border-color: #cc77bb; }
@@ -1400,6 +1401,82 @@ html[data-theme="light"] .tag-thriller {
 }
 html[data-theme="light"] .tag-ascii {
   color: #008870; border-color: #008870;
+}
+html[data-theme="light"] .tag-game {
+  color: #b86b00; border-color: #b86b00;
+}
+
+/* ── Snake2 game layout ─────────────────────────────────── */
+.snake2-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.snake2-canvas-area {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.snake2-canvas-area canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.snake2-dpad {
+  display: grid;
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.snake2-dpad button {
+  width: 44px;
+  height: 44px;
+  background: var(--border);
+  border: 1px solid var(--muted);
+  color: var(--fg);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.snake2-dpad button:active { background: var(--muted); }
+.snake2-dpad .dpad-up    { grid-area: up; }
+.snake2-dpad .dpad-left  { grid-area: left; }
+.snake2-dpad .dpad-right { grid-area: right; }
+.snake2-dpad .dpad-down  { grid-area: down; }
+
+/* Mobile portrait — stack D-pads below canvas */
+@media (max-width: 720px) {
+  .snake2-wrap {
+    flex-direction: column;
+  }
+  .snake2-dpad-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+}
+
+/* Mobile landscape — side-by-side layout */
+@media (orientation: landscape) and (max-width: 900px) {
+  .snake2-wrap {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 /* ── 데스크탑 라이트모드 줄무늬 위치 조정 ──────────────── */

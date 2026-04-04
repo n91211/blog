@@ -17,11 +17,11 @@ const WORK_ITEMS = [
   {
     id:       'snake',
     tab:      '오락',
-    title:    'snake',
-    tagClass: null,
-    tagLabel: null,
-    desc:     null,
-    script:   null,
+    title:    'Snake2',
+    tagClass: 'tag-game',
+    tagLabel: '2P',
+    desc:     '두 마리 뱀을 동시에 조종하는 2인용 스네이크 게임. P1: W/A/S/D, P2: 방향키 또는 O/K/L/;. 모바일 가로모드에서는 화면 좌우 D-pad로 플레이.',
+    script:   'tools/snake2.js',
   },
 ];
 
