@@ -93,6 +93,10 @@
 
       // Lock viewport: prevent page scroll/zoom while touching the game
       wrap.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+
+      // Remove tool-ui padding so canvas sizing uses full container width
+      el.style.padding = '0';
+      el.style.minHeight = 'unset';
     } else {
       // PC: canvas only
       wrap.appendChild(canvasArea);
@@ -147,19 +151,20 @@
     let avail;
 
     if (IS_TOUCH) {
-      const vw = window.innerWidth;
+      // Use container's actual rendered width (accounts for main/page padding)
+      const cw = container.getBoundingClientRect().width || window.innerWidth;
       const vh = window.innerHeight;
-      const isLandscape = vw > vh;
+      const isLandscape = window.innerWidth > window.innerHeight;
 
       if (isLandscape) {
         // Side-by-side: canvas is height-constrained, flanked by dpads
-        const canvasW = vw - DPAD_SIDE_W * 2 - 16;
+        const canvasW = cw - DPAD_SIDE_W * 2 - 16;
         const canvasH = vh - 8;
         avail = Math.min(canvasW, canvasH);
       } else {
         // Stacked: canvas is below/above dpads, width-constrained
         const canvasH = vh - DPAD_STACKED_H * 2 - 8;
-        const canvasW = vw - 8;
+        const canvasW = cw - 8;
         avail = Math.min(canvasW, canvasH);
       }
       avail = Math.max(160, avail);

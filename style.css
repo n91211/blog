@@ -733,7 +733,10 @@ footer p::after  { content: ''; }
   justify-content: center;
   font-size: 13px;
   color: var(--muted);
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   overflow-x: auto;
 }
 
@@ -764,6 +767,8 @@ footer p::after  { content: ''; }
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .ascii-output {
@@ -1117,6 +1122,8 @@ footer p::after  { content: ''; }
 
   .docs-viewer {
     order: 1;
+    min-width: 0;
+    max-width: 100%;
   }
 
   #docsExpandWrapMobile {
