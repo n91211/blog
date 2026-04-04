@@ -206,6 +206,7 @@ main {
   padding: 2rem 1.5rem 0;
   position: relative;
   z-index: 1;
+  overflow-x: clip;
 }
 
 main > section:last-child {
@@ -732,6 +733,8 @@ footer p::after  { content: ''; }
   justify-content: center;
   font-size: 13px;
   color: var(--muted);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 /* ── ASCII576 ──────────────────────────────────────────── */
