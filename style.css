@@ -1417,17 +1417,32 @@ html[data-theme="light"] .tag-game {
   padding: 0.5rem 0;
 }
 
-/* Mobile: [P1 dpad] → [canvas] → [P2 dpad], column */
+/* Mobile: orientation-responsive layout */
 .snake2-wrap.snake2-touch {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   width: 100%;
   padding: 0;
-  /* Full viewport in landscape */
-  min-height: 100svh;
-  justify-content: center;
+  overflow: hidden;       /* prevent page scroll bleed-through */
+  touch-action: none;     /* block browser scroll/zoom on the game area */
+}
+
+/* Portrait: dpads above and below canvas */
+@media (orientation: portrait) {
+  .snake2-wrap.snake2-touch {
+    flex-direction: column;
+    min-height: 100svh;
+  }
+}
+
+/* Landscape: dpads left and right of canvas */
+@media (orientation: landscape) {
+  .snake2-wrap.snake2-touch {
+    flex-direction: row;
+    height: 100svh;
+  }
 }
 
 .snake2-canvas-area {
@@ -1445,24 +1460,25 @@ html[data-theme="light"] .tag-game {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 4px 0;
+  gap: 4px;
+  padding: 6px;
+  flex-shrink: 0;
 }
 
-/* Player label above/below the dpad grid */
+/* Player label */
 .snake2-dpad-label {
   font-size: 11px;
-  color: var(--muted);
   letter-spacing: 0.05em;
   margin-bottom: 2px;
 }
 
-/* 3-column grid: . up . / left down right */
+/* Numpad layout: . ↑ . / ← . → / . ↓ . */
 .snake2-dpad-grid {
   display: grid;
   grid-template-areas:
     ". up ."
-    "left down right";
+    "left . right"
+    ". down .";
   gap: 4px;
 }
 
@@ -1483,12 +1499,26 @@ html[data-theme="light"] .tag-game {
 }
 
 .snake2-btn:active,
-.snake2-btn:focus { background: var(--warm-gray); outline: none; }
+.snake2-btn:focus { outline: none; }
 
 .dpad-up    { grid-area: up; }
 .dpad-left  { grid-area: left; }
-.dpad-down  { grid-area: down; }
 .dpad-right { grid-area: right; }
+.dpad-down  { grid-area: down; }
+
+/* P1: teal colour scheme */
+.snake2-dpad-p1 .snake2-dpad-label { color: #44cc99; }
+.snake2-dpad-p1 .snake2-btn        { border-color: #2a7a5c; color: #44cc99; }
+.snake2-dpad-p1 .snake2-btn:active { background: rgba(68,204,153,0.18); }
+
+/* P2: orange colour scheme */
+.snake2-dpad-p2 .snake2-dpad-label { color: #ee8844; }
+.snake2-dpad-p2 .snake2-btn        { border-color: #8a4a1a; color: #ee8844; }
+.snake2-dpad-p2 .snake2-btn:active { background: rgba(238,136,68,0.18); }
+
+/* Light theme border adjustments */
+html[data-theme="light"] .snake2-dpad-p1 .snake2-btn { border-color: #1d7a54; }
+html[data-theme="light"] .snake2-dpad-p2 .snake2-btn { border-color: #a05020; }
 
 /* ── 데스크탑 라이트모드 줄무늬 위치 조정 ──────────────── */
 @media (min-width: 860px) {

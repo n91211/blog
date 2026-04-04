@@ -86,10 +86,13 @@
     ctx = canvas.getContext('2d');
 
     if (IS_TOUCH) {
-      // Mobile: P1 dpad (top) → canvas → P2 dpad (bottom)
-      wrap.appendChild(makeDpad('P1', handleP1));
+      // Mobile: orientation-responsive — CSS handles row/column switch
+      wrap.appendChild(makeDpad('P1', 'p1', handleP1));
       wrap.appendChild(canvasArea);
-      wrap.appendChild(makeDpad('P2', handleP2));
+      wrap.appendChild(makeDpad('P2', 'p2', handleP2));
+
+      // Lock viewport: prevent page scroll/zoom while touching the game
+      wrap.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
     } else {
       // PC: canvas only
       wrap.appendChild(canvasArea);
@@ -98,10 +101,10 @@
     el.appendChild(wrap);
   }
 
-  // D-pad: classic diamond layout (up / left down right)
-  function makeDpad(label, handler) {
+  // D-pad: numpad layout  . ↑ .  /  ← . →  /  . ↓ .
+  function makeDpad(label, playerClass, handler) {
     const pad = document.createElement('div');
-    pad.className = 'snake2-dpad';
+    pad.className = `snake2-dpad snake2-dpad-${playerClass}`;
 
     const title = document.createElement('span');
     title.className = 'snake2-dpad-label';
@@ -114,8 +117,8 @@
     [
       { cls: 'dpad-up',    ch: '▲', dx:  0, dy: -1 },
       { cls: 'dpad-left',  ch: '◀', dx: -1, dy:  0 },
-      { cls: 'dpad-down',  ch: '▼', dx:  0, dy:  1 },
       { cls: 'dpad-right', ch: '▶', dx:  1, dy:  0 },
+      { cls: 'dpad-down',  ch: '▼', dx:  0, dy:  1 },
     ].forEach(({ cls, ch, dx, dy }) => {
       const btn = document.createElement('button');
       btn.className = `snake2-btn ${cls}`;
@@ -135,7 +138,10 @@
   }
 
   // ── Canvas sizing ─────────────────────────────────────────
-  const DPAD_H = 92;  // estimated D-pad block height (px)
+  // D-pad dimensions for each orientation
+  // Numpad grid: 3×3 cells of 40px + 2×4px gaps = 128px; + label 20px + padding 12px ≈ 160px tall / 136px wide
+  const DPAD_STACKED_H  = 160;  // portrait: dpad above/below canvas
+  const DPAD_SIDE_W     = 144;  // landscape: dpad left/right of canvas
 
   function calcSize() {
     let avail;
@@ -144,10 +150,19 @@
       const vw = window.innerWidth;
       const vh = window.innerHeight;
       const isLandscape = vw > vh;
-      const canvasH = isLandscape
-        ? vh - DPAD_H * 2 - 12
-        : Math.min(vw, vh * 0.55);
-      avail = Math.max(160, Math.min(vw - 8, canvasH));
+
+      if (isLandscape) {
+        // Side-by-side: canvas is height-constrained, flanked by dpads
+        const canvasW = vw - DPAD_SIDE_W * 2 - 16;
+        const canvasH = vh - 8;
+        avail = Math.min(canvasW, canvasH);
+      } else {
+        // Stacked: canvas is below/above dpads, width-constrained
+        const canvasH = vh - DPAD_STACKED_H * 2 - 8;
+        const canvasW = vw - 8;
+        avail = Math.min(canvasW, canvasH);
+      }
+      avail = Math.max(160, avail);
     } else {
       // PC: fill tool-ui container (minus small padding)
       const cw  = container.getBoundingClientRect().width || 560;
